@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* .twrapper {
+	overflow: auto;
+	white-space: nowrap;
+}
+.twrapper table {
+	width:auto;
+} */
+
+/* table th ,td { */
+/* 	border:1px solid; */
+/* } */
+
+/* テーブルのスタイル */
+table {
+	border-collapse: separate;
+	border-spacing:0px;
+}
+
+table th ,td {
+	border:1px solid;
+	border-color: #c0c0c0;
+	box-sizing: border-box;
+}
+tbody tr:nth-of-type(odd) td {
+	background-color: #eeeeee;
+	background-clip: padding-box;
+}
+tbody tr:nth-of-type(even) td {
+	background-color: #ffffff;
+	background-clip: padding-box;
+}
+
+
+/* 列固定 */
+.fixcell {
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	/* 対象のクラスを指定した列について、あらかじめ列1つ分左に位置をずらしておく */
+	left: 60px;
+	width: 60px;
+	min-width: 60px;
+	max-width: 60px;
+}
+.fixcell:first-child {
+	/* 1列目の配置を「left: 0;」に戻す */
+	left: 0;
+}
+.fixcell[colspan="2"] {
+	/* 2列分の配置を「left: 0;」に戻す */
+	width: 120px;
+	min-width: 120px;
+	max-width: 120px;
+	left: 0;
+}
+
+/* 行固定 */
+thead th {
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+	white-space: nowrap;
+	background: #1e90ff;
+	color: #ffffff;
+}
+thead tr:nth-child(1) th {
+	top: 0;
+}
+thead tr:nth-child(2) th {
+	top: 28.5px; /* 2行目は1行目の高さの位置に固定する */
+}
+thead tr:nth-child(3) th {
+	top: 56px; /* 3行目は1〜2行目の高さの位置に固定する */
+}
+
+/* 要素の重なり制御 */
+thead tr:nth-child(1) th:nth-child(1) {
+	z-index: 1;
+}
+thead tr:nth-child(1) th:nth-child(2) {
+	z-index: 1;
+}
+
+input {
+	width:100%;
+	box-sizing: border-box;
+}

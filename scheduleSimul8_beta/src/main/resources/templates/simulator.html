@@ -6,38 +6,81 @@
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <!-- defer属性を付けると、bootstrap.min.jsと並行に読み込んでしまってエラーになる -->
   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+  <link rel="stylesheet" href="css/simulator.css"></link>
   <title>シミュレーション</title>
 
 </head>
 <body>
-  <table class="table table-striped table-bordered table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">11</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="twrapper">
+    <table class="sm-table">
+      <thead class="">
+        <tr>
+          <th class="fixcell" rowspan="3" scope="col">#</th>
+          <th class="fixcell" rowspan="3" scope="col">タスク</th>
+          <th class="" rowspan="3" scope="col">担当者</th>
+          <th class="" rowspan="3" scope="col">見積工数(H)</th>
+          <th class="" rowspan="3" scope="col">生産性</th>
+          <th class="" rowspan="3" scope="col">予定工数(H)</th>
+          <th class="" rowspan="3" scope="col">開始予定日</th>
+          <th class="" rowspan="3" scope="col">終了予定日</th>
+          <th:block th:each="cl : ${cllist}">
+            <th class="" th:text="${cl.mm}"></th>
+          </th:block>
+        </tr>
+        <tr>
+          <th:block th:each="cl : ${cllist}">
+            <th class="" th:text="${cl.dd}"></th>
+          </th:block>
+        </tr>
+        <tr>
+          <th:block th:each="cl : ${cllist}">
+            <th class="" th:text="${cl.dow}"></th>
+          </th:block>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr>
+          <td class="fixcell" scope="row">1</td>
+          <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+          <td><input type="text" name="" class="" value="千田"></td>
+          <td><input type="text" name="" class="" value="1.5"></td>
+          <td><input type="text" name="" class="" value="2.0"></td>
+          <td><input type="text" name="" class="" value="0.75"></td>
+          <td><input type="date" name="" class="" value="2022/01/01"></td>
+          <td><input type="date" name="" class="" value="2022/02/02"></td>
+          <th:block th:each="cl : ${cllist}">
+            <td></td>
+          </th:block>
+        </tr>
+        <tr>
+          <td class="fixcell" scope="row">2</td>
+          <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+          <td><input type="text" name="" class="" value="千田"></td>
+          <td><input type="text" name="" class="" value="1.5"></td>
+          <td><input type="text" name="" class="" value="2.0"></td>
+          <td><input type="text" name="" class="" value="0.75"></td>
+          <td><input type="date" name="" class="" value="2022/01/01"></td>
+          <td><input type="date" name="" class="" value="2022/02/02"></td>
+          <th:block th:each="cl : ${cllist}">
+            <td></td>
+          </th:block>
+        </tr>
+        <tr>
+          <td class="fixcell" scope="row">3</td>
+          <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+          <td><input type="text" name="" class="" value="千田"></td>
+          <td><input type="text" name="" class="" value="1.5"></td>
+          <td><input type="text" name="" class="" value="2.0"></td>
+          <td><input type="text" name="" class="" value="0.75"></td>
+          <td><input type="date" name="" class="" value="2022/01/01"></td>
+          <td><input type="date" name="" class="" value="2022/02/02"></td>
+          <th:block th:each="cl : ${cllist}">
+            <td></td>
+          </th:block>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
