@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+head nav {
+	position: -webkit-sticky; /* Safari */
+	position: sticky;
+}
+head nav {
+	top: 0px;
+}

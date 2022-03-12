@@ -1,117 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css">
-  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-  <!-- defer属性を付けると、bootstrap.min.jsと並行に読み込んでしまってエラーになる -->
-  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
+<!-- th:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head th:replace="common/head :: head_fragment(title = 'シミュレーション', scripts = ~{::script}, links = ~{::link})">
+  <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
   <link rel="stylesheet" href="css/simulator.css"></link>
-  <title>シミュレーション</title>
-
 </head>
 <body>
-  <header>
-    <!-- ナビゲーションバー -->
-    <nav class="navbar navbar-light bg-light">
-      <!-- タイトル -->
-      <a class="navbar-brand" href="#">サイトタイトル</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- ナビゲーションメニュー -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          <li class="nav-item">
-            <a class="nav-link" href="#">リンク１</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">リンク２</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">リンク３</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <!-- th:replaceを使用して、 <header>用のフラグメントを読込みます -->
+  <div th:replace="common/header :: header_fragment(title = 'シミュレーション')"></div>
   <div class="contents">
   <main>
     <div>
-    <div class="wrap-table-sticky">
-      <table class="sm-table">
-        <thead class="">
-          <tr>
-            <th class="fixcell" rowspan="3" scope="col">#</th>
-            <th class="fixcell" rowspan="3" scope="col">タスク</th>
-            <th class="" rowspan="3" scope="col">担当者</th>
-            <th class="" rowspan="3" scope="col">見積工数(H)</th>
-            <th class="" rowspan="3" scope="col">生産性</th>
-            <th class="" rowspan="3" scope="col">予定工数(H)</th>
-            <th class="" rowspan="3" scope="col">開始予定日</th>
-            <th class="" rowspan="3" scope="col">終了予定日</th>
-            <th:block th:each="cl : ${cllist}">
-              <th class="" th:text="${cl.mm}"></th>
-            </th:block>
-          </tr>
-          <tr>
-            <th:block th:each="cl : ${cllist}">
-              <th class="" th:text="${cl.dd}"></th>
-            </th:block>
-          </tr>
-          <tr>
-            <th:block th:each="cl : ${cllist}">
-              <th class="" th:text="${cl.dow}"></th>
-            </th:block>
-          </tr>
-        </thead>
-        <tbody class="">
-          <tr>
-            <td class="fixcell" scope="row">1</td>
-            <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
-            <td><input type="text" name="" class="" value="千田"></td>
-            <td><input type="text" name="" class="" value="1.5"></td>
-            <td><input type="text" name="" class="" value="2.0"></td>
-            <td><input type="text" name="" class="" value="0.75"></td>
-            <td><input type="date" name="" class="" value="2022/01/01"></td>
-            <td><input type="date" name="" class="" value="2022/02/02"></td>
-            <th:block th:each="cl : ${cllist}">
-              <td></td>
-            </th:block>
-          </tr>
-          <tr>
-            <td class="fixcell" scope="row">2</td>
-            <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
-            <td><input type="text" name="" class="" value="千田"></td>
-            <td><input type="text" name="" class="" value="1.5"></td>
-            <td><input type="text" name="" class="" value="2.0"></td>
-            <td><input type="text" name="" class="" value="0.75"></td>
-            <td><input type="date" name="" class="" value="2022/01/01"></td>
-            <td><input type="date" name="" class="" value="2022/02/02"></td>
-            <th:block th:each="cl : ${cllist}">
-              <td></td>
-            </th:block>
-          </tr>
-          <tr>
-            <td class="fixcell" scope="row">3</td>
-            <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
-            <td><input type="text" name="" class="" value="千田"></td>
-            <td><input type="text" name="" class="" value="1.5"></td>
-            <td><input type="text" name="" class="" value="2.0"></td>
-            <td><input type="text" name="" class="" value="0.75"></td>
-            <td><input type="date" name="" class="" value="2022/01/01"></td>
-            <td><input type="date" name="" class="" value="2022/02/02"></td>
-            <th:block th:each="cl : ${cllist}">
-              <td></td>
-            </th:block>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="wrap-table-sticky">
+        <table class="sm-table">
+          <thead class="">
+            <tr>
+              <th class="fixcell" rowspan="3" scope="col">#</th>
+              <th class="fixcell" rowspan="3" scope="col">タスク</th>
+              <th class="" rowspan="3" scope="col">担当者</th>
+              <th class="" rowspan="3" scope="col">見積工数(H)</th>
+              <th class="" rowspan="3" scope="col">生産性</th>
+              <th class="" rowspan="3" scope="col">予定工数(H)</th>
+              <th class="" rowspan="3" scope="col">開始予定日</th>
+              <th class="" rowspan="3" scope="col">終了予定日</th>
+              <th:block th:each="cl : ${cllist}">
+                <th class="" th:text="${cl.mm}"></th>
+              </th:block>
+            </tr>
+            <tr>
+              <th:block th:each="cl : ${cllist}">
+                <th class="" th:text="${cl.dd}"></th>
+              </th:block>
+            </tr>
+            <tr>
+              <th:block th:each="cl : ${cllist}">
+                <th class="" th:text="${cl.dow}"></th>
+              </th:block>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr>
+              <td class="fixcell" scope="row">1</td>
+              <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+              <td><input type="text" name="" class="" value="千田"></td>
+              <td><input type="text" name="" class="" value="1.5"></td>
+              <td><input type="text" name="" class="" value="2.0"></td>
+              <td><input type="text" name="" class="" value="0.75"></td>
+              <td><input type="date" name="" class="" value="2022/01/01"></td>
+              <td><input type="date" name="" class="" value="2022/02/02"></td>
+              <th:block th:each="cl : ${cllist}">
+                <td></td>
+              </th:block>
+            </tr>
+            <tr>
+              <td class="fixcell" scope="row">2</td>
+              <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+              <td><input type="text" name="" class="" value="千田"></td>
+              <td><input type="text" name="" class="" value="1.5"></td>
+              <td><input type="text" name="" class="" value="2.0"></td>
+              <td><input type="text" name="" class="" value="0.75"></td>
+              <td><input type="date" name="" class="" value="2022/01/01"></td>
+              <td><input type="date" name="" class="" value="2022/02/02"></td>
+              <th:block th:each="cl : ${cllist}">
+                <td></td>
+              </th:block>
+            </tr>
+            <tr>
+              <td class="fixcell" scope="row">3</td>
+              <td class="fixcell"><input type="text" name="" class="" value="PG"></td>
+              <td><input type="text" name="" class="" value="千田"></td>
+              <td><input type="text" name="" class="" value="1.5"></td>
+              <td><input type="text" name="" class="" value="2.0"></td>
+              <td><input type="text" name="" class="" value="0.75"></td>
+              <td><input type="date" name="" class="" value="2022/01/01"></td>
+              <td><input type="date" name="" class="" value="2022/02/02"></td>
+              <th:block th:each="cl : ${cllist}">
+                <td></td>
+              </th:block>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   </div>
