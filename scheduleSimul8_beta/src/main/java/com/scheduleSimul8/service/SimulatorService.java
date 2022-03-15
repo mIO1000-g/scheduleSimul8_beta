@@ -18,4 +18,8 @@ public class SimulatorService {
 		return rp.getCalender("2022-01-01", "2022-01-31");
 	}
 
+	public List<Map<String, Object>> getSimulationDetail() {
+		return rp.getSimulationDetail("在庫管理システム", "1");
+	}
+
 }

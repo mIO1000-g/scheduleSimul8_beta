@@ -40,4 +40,33 @@ public class SimulatorRepository {
 		return result;
 	}
 
+	public List<Map<String, Object>> getSimulationDetail(String title, String version) {
+
+		String query =
+				"select\r\n" +
+				"   t1.detail_no\r\n" +
+				"  ,t1.task1\r\n" +
+				"  ,t1.task2\r\n" +
+				"  ,t1.task3\r\n" +
+				"  ,t1.task4\r\n" +
+				"  ,t1.person_in_charge\r\n" +
+				"  ,t1.manhour_estimated\r\n" +
+				"  ,t1.productivity\r\n" +
+				"  ,t1.manhour_scheduled\r\n" +
+				"  ,to_char(to_date(t1.start_date_sheduled, 'yyyymmdd'), 'yyyy-mm-dd') start_date_sheduled\r\n" +
+				"  ,to_char(to_date(t1.end_date_sheduled, 'yyyymmdd'), 'yyyy-mm-dd') end_date_sheduled\r\n" +
+				"  ,t1.create_datetime\r\n" +
+				"  ,t1.update_datetime\r\n" +
+				"from t_simulation_d t1\r\n" +
+				"where 1=1\r\n" +
+				"and t1.title = '" + title + "'\r\n" +
+				"and t1.version = '" + version + "'\r\n" +
+				"order by" +
+				"  t1.detail_no\r\n";
+
+				List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
+
+		return result;
+	}
+
 }

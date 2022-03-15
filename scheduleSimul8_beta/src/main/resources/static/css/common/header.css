@@ -6,4 +6,5 @@ head nav {
 }
 head nav {
 	top: 0px;
+	z-index: 100;
 }

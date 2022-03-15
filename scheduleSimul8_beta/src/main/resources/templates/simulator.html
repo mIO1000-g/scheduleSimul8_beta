@@ -39,6 +39,19 @@
             </tr>
           </thead>
           <tbody class="">
+            <tr th:each="dt : ${dtlist}">
+              <td class="fixcell" scope="row" th:text="${dt.detail_no}"></td>
+              <td class="fixcell"><input type="text" name="" class="" th:value="${dt.task1}"></td>
+              <td><input type="text" name="" class="" th:value="${dt.person_in_charge}"></td>
+              <td><input type="text" name="" class="" th:value="${dt.manhour_estimated}"></td>
+              <td><input type="text" name="" class="" th:value="${dt.productivity}"></td>
+              <td><input type="text" name="" class="" th:value="${dt.manhour_scheduled}"></td>
+              <td><input type="date" name="" class="" th:value="${dt.start_date_sheduled}"></td>
+              <td><input type="date" name="" class="" th:value="${dt.end_date_sheduled}"></td>
+              <th:block th:each="cl : ${cllist}">
+                <td></td>
+              </th:block>
+            </tr>
             <tr>
               <td class="fixcell" scope="row">1</td>
               <td class="fixcell"><input type="text" name="" class="" value="PG"></td>

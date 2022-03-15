@@ -18,6 +18,8 @@ public class SimulatorController {
 
 		model.addAttribute("cllist", sv.getCalender());
 
+		model.addAttribute("dtlist", sv.getSimulationDetail());
+
 		return "simulator";
 	}
 }
