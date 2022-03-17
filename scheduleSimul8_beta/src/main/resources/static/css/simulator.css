@@ -19,8 +19,14 @@ tbody tr:nth-of-type(even) td {
 	background-clip: padding-box;
 }
 
-/* mainに表示するフローコンテンツをまとめるブロックボックスの余白・高さ指定 */
-main > div {
+.condition-area {
+	padding: 20px;
+	height: 60px;
+	box-sizing: border-box;
+}
+
+/* table-area（mainに表示するフローコンテンツをまとめるブロックボックス）の余白・高さ指定 */
+.table-area  {
 	padding: 20px;
 	height: 80vh; /* 表示領域の80% */
 	box-sizing: border-box;
@@ -82,7 +88,7 @@ thead tr:nth-child(1) th:nth-child(2) {
 }
 
 /* テキストボックスのスタイル */
-input {
+td > input {
 	width:100%;
 	box-sizing: border-box;
 }
