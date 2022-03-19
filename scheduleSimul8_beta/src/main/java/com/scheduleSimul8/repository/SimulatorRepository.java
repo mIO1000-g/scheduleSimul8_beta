@@ -40,6 +40,23 @@ public class SimulatorRepository {
 		return result;
 	}
 
+	public List<Map<String, Object>> getSimulationHeader() {
+
+		String query =
+				"select\r\n" +
+				"   t1.title\r\n" +
+				"  ,t1.version\r\n" +
+				"from t_simulation_h t1\r\n" +
+				"where 1=1\r\n" +
+				"order by" +
+				"  t1.title\r\n" +
+				"  ,t1.version\r\n";
+
+				List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
+
+		return result;
+	}
+
 	public List<Map<String, Object>> getSimulationDetail(String title, String version) {
 
 		String query =

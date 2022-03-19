@@ -8,18 +8,25 @@ import org.springframework.stereotype.Service;
 
 import com.scheduleSimul8.repository.SimulatorRepository;
 
+// TODO: イベントごとのメソッドに変更する
+
 @Service
 public class SimulatorService {
 
 	@Autowired
 	private SimulatorRepository rp;
 
-	public List<Map<String, Object>> getCalender() {
-		return rp.getCalender("2022-01-01", "2022-01-31");
+	public List<Map<String, Object>> getCalender(String startDate, String endDate) {
+		return rp.getCalender(startDate, endDate);
 	}
 
-	public List<Map<String, Object>> getSimulationDetail() {
-		return rp.getSimulationDetail("在庫管理システム", "1");
+	public List<Map<String, Object>> getSimulationHeader() {
+		return rp.getSimulationHeader();
+	}
+
+
+	public List<Map<String, Object>> getSimulationDetail(String title, String version) {
+		return rp.getSimulationDetail(title, version);
 	}
 
 }

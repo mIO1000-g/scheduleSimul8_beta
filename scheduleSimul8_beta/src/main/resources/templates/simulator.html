@@ -3,25 +3,29 @@
 <!-- th:replaceを使用して、 <head>用のフラグメントを読込みます -->
 <head th:replace="common/head :: head_fragment(title = 'シミュレーション', scripts = ~{::script}, links = ~{::link})">
   <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
-  <link rel="stylesheet" href="css/simulator.css"></link>
+  <link rel="stylesheet" href="/css/simulator.css"></link>
 </head>
 <body>
   <!-- th:replaceを使用して、 <header>用のフラグメントを読込みます -->
   <div th:replace="common/header :: header_fragment(title = 'シミュレーション')"></div>
   <div class="contents">
   <main>
-    <form action="" method="get">
+    <form method="post">
       <div class="condition-area">
         <label for="version">バージョン</label>
-        <select name="version">
+        <select name="version" required>
           <option value=""></option>
-          <th:block th:each="dt : ${dtlist}">
-            <option th:value="${dt.detail_no}" th:text="${dt.detail_no} + '-' + ${dt.detail_no}"></option>
+          <th:block th:each="vl : ${version_list}">
+            <option th:value="${vl.title} + '-' + ${vl.version}"
+              th:text="${vl.title} + '-ver.' + ${vl.version}"
+              th:selected="${version} == *{version}">
+            </option>
           </th:block>
         </select>
         <label for="start_date">期間</label>
-        <input type="date" name="start_date"> ～ <input type="date" name="end_date">
-        <input type="button" value="検索">
+        <input type="date" name="start_date" th:value="${start_date}" required> ～ <input type="date" th:value="${end_date}" name="end_date" >
+        <button type="submit" formaction="/simulator/search">検索</button>
+        <button type="submit" formaction="/simulator/confirm">確定</button>
       </div>
       <div class="table-area">
         <div class="wrap-table-sticky">
@@ -53,7 +57,7 @@
             </thead>
             <tbody class="">
               <tr th:each="dt : ${dtlist}">
-                <td class="fixcell" scope="row" th:text="${dt.detail_no}"></td>
+                <td class="fixcell" scope="row" ><input type="text" name="" class="" th:value="${dt.detail_no}" readonly tabindex="-1"></td>
                 <td class="fixcell"><input type="text" name="" class="" th:value="${dt.task1}"></td>
                 <td><input type="text" name="" class="" th:value="${dt.person_in_charge}"></td>
                 <td><input type="text" name="" class="" th:value="${dt.manhour_estimated}"></td>

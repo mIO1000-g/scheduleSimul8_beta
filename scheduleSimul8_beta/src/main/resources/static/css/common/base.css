@@ -1,1 +1,7 @@
 @charset "UTF-8";
+
+/* readonly項目のスタイル設定 */
+input[readonly] {
+	background-color: transparent;
+	border-color: transparent;
+}
