@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.scheduleSimul8.dto.SimulatorForm;
 import com.scheduleSimul8.service.SimulatorService;
 
 @Controller
@@ -22,6 +23,9 @@ public class SimulatorController {
 	@GetMapping("/simulator")
 	public String init(Model model) {
 
+		// 画面フォーム生成
+		SimulatorForm form = new SimulatorForm();
+
 		// 現在日付取得
 		final LocalDate today = LocalDate.now();
 		Month month = today.getMonth();
@@ -32,15 +36,23 @@ public class SimulatorController {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String startDate = dtf.format(LocalDate.of(today.getYear(), month, 1));
 		String endDate = dtf.format(LocalDate.of(today.getYear(), month, lastDay));
+		// フォームにセット
+		form.setStartDate(startDate);
+		form.setEndDate(endDate);
 
-		// 可変列（カレンダー部）取得
-		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
+		// 初期化サービス呼び出し
+		sv.init(form);
 
-		// 初期値設定
-		model.addAttribute("start_date", startDate);
-		model.addAttribute("end_date", endDate);
+		model.addAttribute("form", form);
+
+//		// 可変列（カレンダー部）取得
+//		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
+//
+//		// 初期値設定
+//		model.addAttribute("start_date", startDate);
+//		model.addAttribute("end_date", endDate);
 		// ドロップダウンリスト
-		model.addAttribute("version_list", sv.getSimulationHeader());
+		//model.addAttribute("version_list", sv.getSimulationHeader());
 
 		return "simulator";
 	}
@@ -52,20 +64,18 @@ public class SimulatorController {
 			,@RequestParam("end_date") String endDate
 			,Model model) {
 
-		// 可変列（カレンダー部）取得
-		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
+		// TODO ドロップダウンリストとカレンダーは、Form自体で持ち回りできないか？
+		// 画面フォーム生成
+		SimulatorForm form = new SimulatorForm();
+		// フォームにセット
+		form.setStartDate(startDate);
+		form.setEndDate(endDate);
+		form.setVersion(version);
 
-		// ドロップダウンリストのvalue属性が[title-version]であることが前提
-		String[] versionArr = version.split("-");
-		// 明細部取得
-		model.addAttribute("dtlist", sv.getSimulationDetail(versionArr[0], versionArr[1]));
+		// 検索サービス呼び出し
+		sv.search(form);
 
-		// 検索条件部を再設定
-		model.addAttribute("start_date", startDate);
-		model.addAttribute("end_date", endDate);
-		model.addAttribute("version", version);
-		// ドロップダウンリスト
-		model.addAttribute("version_list", sv.getSimulationHeader());
+		model.addAttribute("form", form);
 
 		return "simulator";
 	}
@@ -81,13 +91,13 @@ public class SimulatorController {
 		System.out.println(startDate);
 
 
-		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
-
-		//model.addAttribute("dtlist", sv.getSimulationDetail());
-
-
-		model.addAttribute("start_date", startDate);
-		model.addAttribute("end_date", endDate);
+//		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
+//
+//		//model.addAttribute("dtlist", sv.getSimulationDetail());
+//
+//
+//		model.addAttribute("start_date", startDate);
+//		model.addAttribute("end_date", endDate);
 
 		return "simulator";
 	}

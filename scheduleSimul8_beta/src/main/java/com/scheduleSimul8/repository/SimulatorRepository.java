@@ -44,8 +44,8 @@ public class SimulatorRepository {
 
 		String query =
 				"select\r\n" +
-				"   t1.title\r\n" +
-				"  ,t1.version\r\n" +
+				"   t1.title as key\r\n" +
+				"  ,t1.version as value\r\n" +
 				"from t_simulation_h t1\r\n" +
 				"where 1=1\r\n" +
 				"order by" +
