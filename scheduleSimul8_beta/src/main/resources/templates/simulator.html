@@ -10,20 +10,20 @@
   <div th:replace="common/header :: header_fragment(title = 'シミュレーション')"></div>
   <div class="contents">
   <main>
-    <form method="post">
+    <form method="post" th:object="${form}">
       <div class="condition-area">
         <label for="version">バージョン</label>
         <select name="version" required>
           <option value=""></option>
-          <th:block th:each="el : ${form.versionDropdown}">
+          <th:block th:each="el : *{versionDropdown}">
             <option th:value="${el.key} + '-' + ${el.value}"
               th:text="${el.key} + '-ver.' + ${el.value}"
-              th:selected="${form.version} == ${el.key} + '-' + ${el.value}">
+              th:selected="*{version} == ${el.key} + '-' + ${el.value}">
             </option>
           </th:block>
         </select>
-        <label for="start_date">期間</label>
-        <input type="date" name="start_date" th:value="${form.startDate}" required> ～ <input type="date" th:value="${form.endDate}" name="end_date" >
+        <label for="startDate">期間</label>
+        <input type="date" th:field="*{startDate}" required> ～ <input type="date" th:field="*{endDate}">
         <button type="submit" formaction="/simulator/search">検索</button>
         <button type="submit" formaction="/simulator/confirm">確定</button>
       </div>
@@ -43,23 +43,23 @@
                 <th class="" rowspan="3" scope="col">予定工数(H)</th>
                 <th class="" rowspan="3" scope="col">開始予定日</th>
                 <th class="" rowspan="3" scope="col">終了予定日</th>
-                <th:block th:each="cl : ${form.calender}">
+                <th:block th:each="cl : *{calender}">
                   <th class="" th:text="${cl.mm}"></th>
                 </th:block>
               </tr>
               <tr>
-                <th:block th:each="cl : ${form.calender}">
+                <th:block th:each="cl : *{calender}">
                   <th class="" th:text="${cl.dd}"></th>
                 </th:block>
               </tr>
               <tr>
-                <th:block th:each="cl : ${form.calender}">
+                <th:block th:each="cl : *{calender}">
                   <th class="" th:text="${cl.dow}"></th>
                 </th:block>
               </tr>
             </thead>
             <tbody class="">
-              <tr th:each="dt : ${form.detail}">
+              <tr th:each="dt : *{detail}">
                 <td class="fixcell" scope="row" ><input type="text" name="" class="" th:value="${dt.detailNo}" readonly tabindex="-1"></td>
                 <td class="fixcell"><input type="text" name="" class="" th:value="${dt.task1}"></td>
                 <td><input type="text" name="" class="" th:value="${dt.task2}"></td>
@@ -71,7 +71,7 @@
                 <td><input type="text" name="" class="" th:value="${dt.manhourScheduled}"></td>
                 <td><input type="date" name="" class="" th:value="${dt.startDateScheduled}"></td>
                 <td><input type="date" name="" class="" th:value="${dt.endDateScheduled}"></td>
-                <th:block th:each="cl : ${form.calender}">
+                <th:block th:each="cl : *{calender}">
                   <td></td>
                 </th:block>
               </tr>

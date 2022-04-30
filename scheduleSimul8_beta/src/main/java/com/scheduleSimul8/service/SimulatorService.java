@@ -42,7 +42,9 @@ public class SimulatorService {
 		form.setVersionDropdown(getSimulationHeader());
 
 		// カレンダー取得
+		System.out.println("startDate=" + form.getStartDate());
 		form.setCalender(getCalender(form.getStartDate(), form.getEndDate()));
+
 
 		// ドロップダウンリストのvalue属性が[title-version]であることが前提
 		String[] versionArr = form.getVersion().split("-");

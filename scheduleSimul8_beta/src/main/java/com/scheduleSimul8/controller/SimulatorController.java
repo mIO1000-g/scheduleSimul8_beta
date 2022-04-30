@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,10 +22,10 @@ public class SimulatorController {
 	private SimulatorService sv;
 
 	@GetMapping("/simulator")
-	public String init(Model model) {
+	public String init(@ModelAttribute("form") SimulatorForm form) {
 
 		// 画面フォーム生成
-		SimulatorForm form = new SimulatorForm();
+		//SimulatorForm form = new SimulatorForm();
 
 		// 現在日付取得
 		final LocalDate today = LocalDate.now();
@@ -43,39 +44,15 @@ public class SimulatorController {
 		// 初期化サービス呼び出し
 		sv.init(form);
 
-		model.addAttribute("form", form);
-
-//		// 可変列（カレンダー部）取得
-//		model.addAttribute("cllist", sv.getCalender(startDate, endDate));
-//
-//		// 初期値設定
-//		model.addAttribute("start_date", startDate);
-//		model.addAttribute("end_date", endDate);
-		// ドロップダウンリスト
-		//model.addAttribute("version_list", sv.getSimulationHeader());
-
 		return "simulator";
 	}
 
 	// TODO: RestControllerにすべきかも……
 	@PostMapping("/simulator/search")
-	public String search(@RequestParam("version") String version
-			,@RequestParam("start_date") String startDate
-			,@RequestParam("end_date") String endDate
-			,Model model) {
-
-		// TODO ドロップダウンリストとカレンダーは、Form自体で持ち回りできないか？
-		// 画面フォーム生成
-		SimulatorForm form = new SimulatorForm();
-		// フォームにセット
-		form.setStartDate(startDate);
-		form.setEndDate(endDate);
-		form.setVersion(version);
+	public String search(@ModelAttribute("form") SimulatorForm form) {
 
 		// 検索サービス呼び出し
 		sv.search(form);
-
-		model.addAttribute("form", form);
 
 		return "simulator";
 	}
