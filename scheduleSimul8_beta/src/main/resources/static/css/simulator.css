@@ -1,5 +1,22 @@
 @charset "UTF-8";
 
+/* コンテキストメニューのスタイル */
+#contextmenu {
+	display:none;
+	position:fixed;
+	left:0px;
+	top:0px;
+ 	padding: 0px 10px 0px 10px;
+	border:1px solid #dadce0;
+	background-color:#fff;
+	z-index: 10;
+	box-shadow: 4px 4px 2px -2px rgba(0, 0, 0, 0.48);
+}
+#contextmenu li{
+	cursor:pointer;
+	list-style: none;
+}
+
 /* テーブルのスタイル */
 table {
 	border-collapse: separate;
@@ -29,7 +46,14 @@ tbody tr:nth-of-type(even) td {
 /* table-area（mainに表示するフローコンテンツをまとめるブロックボックス）の余白・高さ指定 */
 .table-area  {
 	padding: 20px;
-	height: 80vh; /* 表示領域の80% */
+	height: 75vh; /* 表示領域の80% */
+	box-sizing: border-box;
+}
+
+/* footer-areaの余白・高さ指定 */
+.footer-area {
+	padding: 5px 20px;
+	height: 40px;
 	box-sizing: border-box;
 }
 

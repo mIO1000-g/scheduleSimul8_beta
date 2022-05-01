@@ -4,10 +4,17 @@
 <head th:replace="common/head :: head_fragment(title = 'シミュレーション', scripts = ~{::script}, links = ~{::link})">
   <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
   <link rel="stylesheet" href="/css/simulator.css"></link>
+  <script th:src="@{/js/simulator.js}"></script>
 </head>
 <body>
   <!-- th:replaceを使用して、 <header>用のフラグメントを読込みます -->
   <div th:replace="common/header :: header_fragment(title = 'シミュレーション')"></div>
+  <div id="contextmenu">
+    <ul>
+      <li>行複写</li>
+      <li>行削除</li>
+    </ul>
+  </div>
   <div class="contents">
   <main>
     <form method="post" th:object="${form}">
@@ -24,12 +31,12 @@
         </select>
         <label for="startDate">期間</label>
         <input type="date" th:field="*{startDate}" required> ～ <input type="date" th:field="*{endDate}">
-        <button type="submit" formaction="/simulator/search">検索</button>
-        <button type="submit" formaction="/simulator/confirm">確定</button>
+        <button id="searchB" type="submit" formaction="/simulator/search">検索</button>
+        <button id="confirmB" type="submit" formaction="/simulator/confirm">確定</button>
       </div>
       <div class="table-area">
         <div class="wrap-table-sticky">
-          <table class="sm-table">
+          <table class="sm-table" id="table">
             <thead class="">
               <tr>
                 <th class="fixcell" rowspan="3" scope="col">#</th>
@@ -60,7 +67,7 @@
             </thead>
             <tbody class="">
               <tr th:each="dt : *{detail}">
-                <td class="fixcell" scope="row" ><input type="text" name="" class="" th:value="${dt.detailNo}" readonly tabindex="-1"></td>
+                <td class="fixcell showContextmenu" scope="row" ><input type="text" name="" class="" th:value="${dt.detailNo}" readonly tabindex="-1"></td>
                 <td class="fixcell"><input type="text" name="" class="" th:value="${dt.task1}"></td>
                 <td><input type="text" name="" class="" th:value="${dt.task2}"></td>
                 <td><input type="text" name="" class="" th:value="${dt.task3}"></td>
@@ -78,6 +85,9 @@
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="footer-area">
+        <button  id="addRowB">行追加</button>
       </div>
     </form>
   </main>
