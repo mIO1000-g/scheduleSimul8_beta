@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout :: layout(title='プロジェクト一覧', scripts = ~{::script}, links = ~{::link})}">
+<!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head>
+  <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
+  <link rel="stylesheet" href="/css/simulator.css"></link>
+  <script th:src="@{/js/simulator.js}"></script>
+</head>
+<body>
+  <div layout:fragment="content">
+    置き換え
+  </div>
+</body>
+</html>
