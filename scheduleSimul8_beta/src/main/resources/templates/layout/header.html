@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:fragment="header_fragment(title)">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <link rel="stylesheet" href="css/common/header.css"></link>
 </head>
-<header>
+<header th:fragment="header_fragment(title)">
   <!-- ナビゲーションバー -->
   <nav class="navbar navbar-light bg-light">
     <!-- タイトル -->

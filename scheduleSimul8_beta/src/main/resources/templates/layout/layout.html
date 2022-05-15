@@ -2,16 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:fragment="layout(title, scripts, links)">
-<!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
-<head layout:replace="layout/head :: head_fragment(${title}, ${scripts}, ${links})">
+<!-- th:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head th:replace="layout/head :: head_fragment(${title}, ${scripts}, ${links})">
 </head>
 <body>
   <!-- 共通ヘッダー -->
-  <!-- layout:replaceを使用して、 <header>用のフラグメントを読込みます -->
-  <div layout:replace="layout/header :: header_fragment(${title})"></div>
+  <!-- th:replaceを使用して、 <header>用のフラグメントを読込みます -->
+  <div th:replace="layout/header :: header_fragment(${title})"></div>
   <!-- 各画面固有コンテンツ -->
   <div layout:fragment="content">
-    ao
+    この部分のコンテンツは書き換えられます
   </div>
   <!-- 共通フッター -->
 </body>
