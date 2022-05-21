@@ -5,3 +5,22 @@ input[readonly] {
 	background-color: transparent;
 	border-color: transparent;
 }
+
+/* テーブルのスタイル */
+table {
+	border-collapse: separate;
+	border-spacing:0px;
+}
+table th ,td {
+	border:1px solid;
+	border-color: #c0c0c0;
+	box-sizing: border-box;
+}
+tbody tr:nth-of-type(odd) td {
+	background-color: #eeeeee;
+	background-clip: padding-box;
+}
+tbody tr:nth-of-type(even) td {
+	background-color: #ffffff;
+	background-clip: padding-box;
+}

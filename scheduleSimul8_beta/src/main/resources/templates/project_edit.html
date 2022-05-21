@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout :: layout(title='プロジェクト編集', scripts = ~{::script}, links = ~{::link})}">
+<!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head>
+<!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
+<link rel="stylesheet" href="/css/project_edit.css"></link>
+</head>
+<body>
+  <main layout:fragment="content">
+    <form method="post" th:object="${form}">
+      <div class="condition-area">
+        <button id="confirmB" type="submit"
+          formaction="/project_edit/confirm">確定</button>
+        <button id="deleteB" type="submit"
+          formaction="/project_edit/delete">削除</button>
+      </div>
+      <div class="edit-area">
+        <div>
+          <label for="projectId">プロジェクトID</label>
+          <input type="text" th:field="*{projectId}" required>
+        </div>
+        <div>
+          <label for="projectName">プロジェクト名</label>
+          <input type="text" th:field="*{projectName}" required>
+        </div>
+
+      </div>
+    </form>
+  </main>
+</body>
+</html>

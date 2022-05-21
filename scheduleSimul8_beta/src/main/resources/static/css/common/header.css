@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
-head nav {
+header {
 	position: -webkit-sticky; /* Safari */
 	position: sticky;
-}
-head nav {
 	top: 0px;
-	z-index: 100;
+	z-index: 999;
+	background-color:red;
+}
+main {
+	position: relative;
+	z-index: 0;
 }

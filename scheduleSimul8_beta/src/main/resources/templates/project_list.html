@@ -4,13 +4,44 @@
   layout:decorate="~{layout/layout :: layout(title='プロジェクト一覧', scripts = ~{::script}, links = ~{::link})}">
 <!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
 <head>
-  <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
-  <link rel="stylesheet" href="/css/simulator.css"></link>
-  <script th:src="@{/js/simulator.js}"></script>
+<!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
+<link rel="stylesheet" href="/css/project_list.css"></link>
+<script th:src="@{/js/project_list.js}"></script>
 </head>
 <body>
-  <div layout:fragment="content">
-    置き換え
-  </div>
+  <main layout:fragment="content">
+    <form method="post" th:object="${form}">
+      <div class="condition-area">
+        <label for="projectName">プロジェクト名</label> <input type="text"
+          th:field="*{projectName}">
+        <button id="searchB" type="submit"
+          formaction="/project_list/search">検索</button>
+        <button id="entryB" type="submit"
+          formaction="/project_list/entry">新規作成</button>
+      </div>
+      <div class="table-area">
+        <table id="mainTable" class="sm-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>プロジェクトID</th>
+              <th>プロジェクト名</th>
+              <th colspan="3">遷移</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="dt : *{detail}">
+              <td tabindex="-1" th:text="${dt.no}">1</td>
+              <td tabindex="-1" th:text="${dt.projectId}">11111</td>
+              <td tabindex="-1" th:text="${dt.projectName}">プロジェクト名</td>
+              <td tabindex="-1"><a th:href="'/project_edit/' + ${dt.projectId}">編集</a></td>
+              <td tabindex="-1"><a th:href="'/#/' + ${dt.projectId}">スケジュール</a></td>
+              <td tabindex="-1"><a th:href="'/#/' + ${dt.projectId}">分析</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </main>
 </body>
 </html>

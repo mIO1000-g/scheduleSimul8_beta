@@ -10,9 +10,9 @@
   <!-- th:replaceを使用して、 <header>用のフラグメントを読込みます -->
   <div th:replace="layout/header :: header_fragment(${title})"></div>
   <!-- 各画面固有コンテンツ -->
-  <div layout:fragment="content">
+  <main layout:fragment="content">
     この部分のコンテンツは書き換えられます
-  </div>
+  </main>
   <!-- 共通フッター -->
 </body>
 </html>

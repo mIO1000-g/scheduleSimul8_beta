@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+
+/* condition-areaの余白・高さ指定 */
+.condition-area {
+	margin: 0 auto;
+	padding: 20px;
+	width: 80%;
+	min-width: 1200px;
+	height: 60px;
+	box-sizing: border-box;
+}
+
+/* table-area（mainに表示するフローコンテンツをまとめるブロックボックス）の余白・高さ指定 */
+.table-area  {
+	padding: 20px;
+	height: 70vh; /* 表示領域の80% */
+	box-sizing: border-box;
+}
+
+/* 新規登録ボタンの配置 */
+#entryB {
+	float: right;
+}
+
+
+/* テーブル、行、列のスタイル */
+#mainTable {
+	margin: 0 auto;
+	width: 80%;
+	min-width: 1200px;
+}
+
+thead th {
+	white-space: nowrap;
+	background: #1e90ff;
+	color: #ffffff;
+}
+
+
+tbody tr td:nth-of-type(1) {
+	width: 5%;
+}
+tbody tr td:nth-of-type(2) {
+	width: 15%;
+}
+tbody tr td:nth-of-type(3) {
+	width: 35%;
+}
+tbody tr td:nth-of-type(4) {
+	width: 15%;
+	text-align: center;
+}
+tbody tr td:nth-of-type(5) {
+	width: 15%;
+	text-align: center;
+}
+tbody tr td:nth-of-type(6) {
+	width: 15%;
+	text-align: center;
+}
