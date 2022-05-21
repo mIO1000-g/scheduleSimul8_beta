@@ -13,13 +13,13 @@
       <div class="condition-area">
         <button id="confirmB" type="submit"
           formaction="/project_edit/confirm">確定</button>
-        <button id="deleteB" type="submit"
+        <button id="deleteB" type="submit" th:disabled="*{editMode} == '1'"
           formaction="/project_edit/delete">削除</button>
       </div>
       <div class="edit-area">
         <div>
           <label for="projectId">プロジェクトID</label>
-          <input type="text" th:field="*{projectId}" required>
+          <input type="text" th:field="*{projectId}" th:readonly="*{editMode} == '2'" required>
         </div>
         <div>
           <label for="projectName">プロジェクト名</label>

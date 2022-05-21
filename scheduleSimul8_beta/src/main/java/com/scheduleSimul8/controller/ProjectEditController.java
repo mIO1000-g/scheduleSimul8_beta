@@ -13,6 +13,8 @@ public class ProjectEditController {
 	@GetMapping("/project_edit")
 	public String init(@ModelAttribute("form") ProjectEditForm form) {
 
+		form.setEditMode("1");
+
 		return "project_edit";
 
 	}
@@ -20,6 +22,7 @@ public class ProjectEditController {
 	@GetMapping("/project_edit/{projectId}")
 	public String init(@PathVariable("projectId") String projectId, @ModelAttribute("form") ProjectEditForm form) {
 
+		form.setEditMode("2");
 		form.setProjectId(projectId);
 
 		return "project_edit";
