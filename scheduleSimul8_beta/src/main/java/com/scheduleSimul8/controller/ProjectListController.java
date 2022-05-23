@@ -24,6 +24,16 @@ public class ProjectListController {
 
 	}
 
+	@PostMapping("/project_list/search")
+	public String search(@ModelAttribute("form") ProjectListForm form) {
+
+		sv.search(form);
+
+		return "project_list";
+
+	}
+
+
 	@PostMapping("/project_list/entry")
 	public String entry(@ModelAttribute("form") ProjectListForm form) {
 
