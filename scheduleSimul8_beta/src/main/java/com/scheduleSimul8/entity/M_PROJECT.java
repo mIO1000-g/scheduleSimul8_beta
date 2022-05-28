@@ -20,4 +20,10 @@ public class M_PROJECT {
 
 	@Column(name = "project_name")
 	private String projectName;
+
+	@Column(name = "insert_date")
+	private String insertDate;
+
+	@Column(name = "update_date")
+	private String updateDate;
 }

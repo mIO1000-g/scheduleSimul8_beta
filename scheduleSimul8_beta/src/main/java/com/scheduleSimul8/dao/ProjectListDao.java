@@ -14,4 +14,5 @@ public interface ProjectListDao {
 
 	@Select
 	public List<ProjectListDetail> selectByProjectName(String projectName);
+
 }

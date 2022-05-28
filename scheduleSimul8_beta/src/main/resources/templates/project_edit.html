@@ -6,15 +6,15 @@
 <head>
 <!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
 <link rel="stylesheet" href="/css/project_edit.css"></link>
+<script th:src="@{/js/project_edit.js}"></script>
 </head>
 <body>
   <main layout:fragment="content">
     <form method="post" th:object="${form}">
       <div class="condition-area">
-        <button id="confirmB" type="submit"
-          formaction="/project_edit/confirm">確定</button>
-        <button id="deleteB" type="submit" th:disabled="*{editMode} == '1'"
-          formaction="/project_edit/delete">削除</button>
+        <button id="confirmB" type="submit" formaction="/project_edit/confirm">確定</button>
+        <button id="deleteB" type="submit" formaction="/project_edit/delete" th:disabled="*{editMode} == '1'">削除</button>
+        <input type="hidden" th:field="*{editMode}">
       </div>
       <div class="edit-area">
         <div>
