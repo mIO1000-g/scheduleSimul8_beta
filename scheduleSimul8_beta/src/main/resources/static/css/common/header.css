@@ -1,13 +1,11 @@
 @charset "UTF-8";
 
 header {
-	position: -webkit-sticky; /* Safari */
-	position: sticky;
+	position: fixed;
+	width: 100%;
 	top: 0px;
 	z-index: 999;
-	background-color:red;
 }
 main {
-	position: relative;
-	z-index: 0;
+	padding-top:60px;
 }

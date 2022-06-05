@@ -8,7 +8,7 @@
   <!-- 全画面共通のcssを定義します -->
   <link rel="stylesheet" type="text/css" th:href="@{/css/common/base.css}"/>
   <link rel="stylesheet" type="text/css" th:href="@{/css/common/header.css}"/>
-  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css">
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
   <!-- 各画面専用のcssを定義します -->
   <th:block th:replace="${links} ?: _" />
