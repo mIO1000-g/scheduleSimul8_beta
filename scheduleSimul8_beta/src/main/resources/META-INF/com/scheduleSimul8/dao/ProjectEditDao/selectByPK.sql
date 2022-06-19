@@ -5,5 +5,3 @@ select
 from m_project m1
 where 1=1
 and m1.project_id = /* projectId */'123'
-
-;

@@ -20,9 +20,10 @@ public class Dropdown {
 	public List<Dropdown> convertToDropdownList(List<Map<String, Object>> mapList) {
 		List<Dropdown> ddList = new ArrayList<>();
 		for (Map<String, Object> el : mapList) {
-			this.setKey(el.get("key").toString());
-			this.setValue(el.get("value").toString());
-			ddList.add(this);
+			Dropdown dd = new Dropdown();
+			dd.setKey(el.get("key").toString());
+			dd.setValue(el.get("value").toString());
+			ddList.add(dd);
 		}
 		return ddList;
 	}

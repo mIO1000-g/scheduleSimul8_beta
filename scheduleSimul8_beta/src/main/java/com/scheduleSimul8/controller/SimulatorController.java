@@ -49,7 +49,7 @@ public class SimulatorController {
 
 	// TODO: RestControllerにすべきかも……
 	@PostMapping("/simulator/search")
-	public String search(@ModelAttribute("form") SimulatorForm form) {
+	public String search(@ModelAttribute("form") SimulatorForm form, Model model) {
 
 		// 検索サービス呼び出し
 		sv.search(form);

@@ -22,12 +22,10 @@
         <label for="version">バージョン</label>
         <select name="version" required>
           <option value=""></option>
-          <th:block th:each="el : *{versionDropdown}">
-            <option th:value="${el.key} + '-' + ${el.value}"
-              th:text="${el.key} + '-ver.' + ${el.value}"
-              th:selected="*{version} == ${el.key} + '-' + ${el.value}">
-            </option>
-          </th:block>
+          <option  th:each="el : *{versionDropdown}" th:value="${el.key} + '-' + ${el.value}"
+            th:text="${el.key} + '-ver.' + ${el.value}"
+            th:selected="*{version} == ${el.key} + '-' + ${el.value}">
+          </option>
         </select>
         <label for="startDate">期間</label>
         <input type="date" th:field="*{startDate}" required> ～ <input type="date" th:field="*{endDate}">

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout :: layout(title='ワークフロー編集', scripts = ~{::script}, links = ~{::link})}">
+<!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head>
+<!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
+<link rel="stylesheet" href="/css/workflow_edit.css"></link>
+<script th:src="@{/js/workflow_edit.js}"></script>
+</head>
+<body>
+  <main layout:fragment="content">
+    <form>
+      <div class="wrapper">
+        <div class="main-ticket-area">
+          <details open>
+            <summary>
+                <label for="">チケットID</label>
+                <input type="text">
+                <label for="">チケットタイトル</label>
+                <input type="text">
+            </summary>
+            <li>
+              <div>
+                <label for="">担当</label>
+                <input type="text">
+              </div>
+              <div>
+                <label for="">見積工数</label>
+                <input type="text">
+                <label for="">生産性</label>
+                <input type="text">
+                <label for="">予定工数</label>
+                <input type="text">
+              </div>
+              <div>
+                <label for="">進捗率</label>
+                <input type="text">
+                <label for="">進捗工数</label>
+                <input type="text">
+                <label for="">実績工数</label>
+                <input type="text">
+              </div>
+              <div>
+                <label for="">予定開始日</label>
+                <input type="date">
+                <label for="">予定終了日</label>
+                <input type="date">
+                <label for="">実績開始日</label>
+                <input type="date">
+                <label for="">実績終了日</label>
+                <input type="date">
+              </div>
+              <div>
+                <label for="">メモ</label>
+                <input type="text">
+              </div>
+
+
+
+              <input type="hidden">
+              <input type="hidden">
+              <input type="hidden">
+              <input type="hidden">
+            </li>
+          </details>
+        </div>
+        <div class="sub-ticket-area">
+        </div>
+
+      </div>
+   </form>
+
+  </main>
+</body>
+</html>

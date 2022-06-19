@@ -13,6 +13,6 @@
 	display: flex;
 	flex-flow: column;
 	padding: 20px;
-	height: 70vh; /* 表示領域の80% */
+	height: 70vh; /* 表示領域の70% */
 	box-sizing: border-box;
 }

@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+li {
+	list-style: none;
+}
+
+/* wrapperの余白指定 */
+.wrapper {
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.main-ticket-area {
+	box-sizing: border-box;
+}
+
+.main-ticket-area summary {
+	background-color: #FFFFCC;
+	padding: 8px 20px 4px 20px;
+	box-sizing: border-box;
+}
+
+.main-ticket-area li {
+	padding: 20px;
+	box-sizing: border-box;
+}

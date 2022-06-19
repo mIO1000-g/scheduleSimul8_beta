@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/layout :: layout(title='実装テスト', scripts = ~{::script}, links = ~{::link})}">
+<!-- layout:replaceを使用して、 <head>用のフラグメントを読込みます -->
+<head>
+<!-- 当画面で使用するjavascript、cssをフラグメントに渡します -->
+<script th:src="@{/js/test.js}"></script>
+</head>
+<body>
+  <main layout:fragment="content">
+
+    <form method="post" th:object="${form}">
+      <div>セッションテスト：[[${testSession.count}]]</div>
+      <div class="condition-area">
+        <label for="projectName">プロジェクト名</label> <input type="text"
+          th:field="*{projectName}">
+        <label for="version">バージョン</label>
+        <select id="version" name="version" onchange="changeTitleList();">
+          <option value=""></option>
+          <option value="1">１</option>
+          <option value="2">２</option>
+        </select>
+        <label for="title">プロジェクトタイトル</label>
+        <select id="title" name="title">
+          <option value=""></option>
+          <option th:each="el : *{titleList}" th:value="${el.key}"
+            th:text="${el.value}"
+            th:selected="*{title} == ${el.key}">
+          </option>
+        </select>
+        <button id="searchB" type="submit"
+          formaction="/test/search">検索</button>
+        <button id="clear" type="submit"
+          formaction="/test/clear">セッションクリア</button>
+      </div>
+      <div class="table-area">
+        <table id="mainTable" class="sm-table">
+          <thead>
+            <tr>
+              <th>選択</th>
+              <th>プロジェクトID</th>
+              <th>プロジェクト名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="dt, stat : *{detail}">
+              <td>
+                <input type="checkbox" th:field="*{detail[__${stat.index}__].checkbox}">
+              </td>
+              <td>
+                <input type="text" th:field="*{detail[__${stat.index}__].projectId}">
+              </td>
+              <td>
+                <input type="text" th:field="*{detail[__${stat.index}__].projectName}">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
