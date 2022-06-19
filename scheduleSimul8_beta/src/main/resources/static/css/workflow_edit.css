@@ -25,3 +25,116 @@ li {
 	padding: 20px;
 	box-sizing: border-box;
 }
+
+summary > label {
+	padding-left: 15px;
+	padding-right: 10px;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-rows: 30px 30px 30px 30px 60px;
+	grid-template-columns: 8% 17% 8% 17% 8% 17% 8% 17%;
+	row-gap: 2px;
+	column-gap: 10px;
+	width: 70%;
+	min-width: 1000px;
+
+}
+
+#personInCharge_label {
+	grid-row: 1/2;
+	grid-column: 1/2;
+}
+#personInCharge {
+	grid-row: 1/2;
+	grid-column: 2/3;
+}
+#manhourEstimated_label {
+	grid-row: 2/3;
+	grid-column: 1/2;
+}
+#manhourEstimated {
+	grid-row: 2/3;
+	grid-column: 2/3;
+}
+#productivity_label {
+	grid-row: 2/3;
+	grid-column: 3/4;
+}
+#productivity {
+	grid-row: 2/3;
+	grid-column: 4/5;
+}
+#manhourScheduled_label {
+	grid-row: 2/3;
+	grid-column: 5/6;
+}
+#manhourScheduled {
+	grid-row: 2/3;
+	grid-column: 6/7;
+}
+#progressRate_label {
+	grid-row: 3/4;
+	grid-column: 1/2;
+}
+#progressRate {
+	grid-row: 3/4;
+	grid-column: 2/3;
+}
+#monHourProgress_label {
+	grid-row: 3/4;
+	grid-column: 3/4;
+}
+#monHourProgress {
+	grid-row: 3/4;
+	grid-column: 4/5;
+}
+#manhourResult_label {
+	grid-row: 3/4;
+	grid-column: 5/6;
+}
+#manhourResult {
+	grid-row: 3/4;
+	grid-column: 6/7;
+}
+#startDateScheduled_label {
+	grid-row: 4/5;
+	grid-column: 1/2;
+}
+#startDateScheduled {
+	grid-row: 4/5;
+	grid-column: 2/3;
+}
+#endDateScheduled_label {
+	grid-row: 4/5;
+	grid-column: 3/4;
+}
+#endDateScheduled {
+	grid-row: 4/5;
+	grid-column: 4/5;
+}
+#startDateResult_label {
+	grid-row: 4/5;
+	grid-column: 5/6;
+}
+#startDateResult {
+	grid-row: 4/5;
+	grid-column: 6/7;
+}
+#endDateResult_label {
+	grid-row: 4/5;
+	grid-column: 7/8;
+}
+#endDateResult {
+	grid-row: 4/5;
+	grid-column: 8/9;
+}
+#note_label {
+	grid-row: 5/6;
+	grid-column: 1/2;
+}
+#note {
+	grid-row: 5/6;
+	grid-column: 2/9;
+}
