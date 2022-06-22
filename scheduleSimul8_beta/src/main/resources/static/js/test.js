@@ -29,12 +29,12 @@ $(function() {
 				let option = $("<option>")
 						.text(content["value"])
 						.val(content["key"])
-						.prop("selected", _title === content["value"]);
+						.prop("selected", _title === content["key"]);
 				select.append(option);
 			}, data);
 
 		}).fail(function() {
 			alert("error!"); // 通信に失敗した場合の処理
-		})
+		});
 	});
 });
