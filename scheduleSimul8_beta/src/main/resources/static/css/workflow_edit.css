@@ -161,4 +161,5 @@ summary > label {
 .note {
 	grid-row: 4/5;
 	grid-column: 2/9;
+	resize: none;
 }
