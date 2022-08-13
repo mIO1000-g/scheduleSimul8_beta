@@ -179,4 +179,16 @@ summary > label {
 	list-style: none;
 }
 
-
+.tagselected-wrapper a {
+	display: inline-block;
+	border-radius: 10%;
+	text-align: center;
+	padding: 5px 5px;
+	margin: 0px 2px;
+	background: #4169e1;
+	line-height: 1em;
+	transition: .3s;
+}
+.tagselected-wrapper em {
+	color: #ffffff;
+}
